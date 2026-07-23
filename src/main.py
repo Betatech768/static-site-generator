@@ -7,7 +7,7 @@ import sys
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
 SOUCRE_DIR = os.path.join(ROOT_DIR, "static")
-PUBLIC = os.path.join(ROOT_DIR, "doc")
+PUBLIC = os.path.join(ROOT_DIR, "docs")
 BASE_PATH = sys.argv[1] if len(sys.argv) > 1 else "/"
 
 def main():
