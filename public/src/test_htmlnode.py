@@ -1,12 +1,7 @@
 import unittest
 from htmlnode import HTMLNode, LeafNode
 
-from helper import (
-    BlockType,
-    block_to_block_type,
-    markdown_to_blocks,
-    markdown_to_html_node,
-)
+from helper import markdown_to_html_node
 
 
 class TestHTMLNode(unittest.TestCase):
@@ -17,21 +12,7 @@ class TestHTMLNode(unittest.TestCase):
         self.assertEqual(node.props_to_html(), "")
         self.assertEqual(node2.props_to_html(), f' arsg="game"')
 
-        def test_paragraph(self):
-            md = """
-                    This is **bolded** paragraph
-                    text in a p
-                    tag here
-
-                """
-
-            node = markdown_to_html_node(md)
-            html = node.to_html()
-            self.assertEqual(
-                html,
-                "<div><p>This is <b>bolded</b> paragraph text in a p tag here</p></div>",
-            )
-
+      
     def test_paragraphs(self):
         md = """
                 This is **bolded** paragraph

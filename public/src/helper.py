@@ -2,19 +2,9 @@ import re
 from textwrap import dedent
 from enum import Enum
 from text_to_textnode import text_to_textnode
+from extractmarkdown import extract_markdown_images, extract_markdown_links
 from htmlnode import HTMLNode, ParentNode
-from textnode import TextNode, text_node_to_html_node
-
-
-def extract_markdown_images(text) -> list[tuple[str, str]]:
-    matches = re.findall(r"!\[(.*?)\]\((.*?)\)", text)
-    return matches
-
-
-def extract_markdown_links(text) -> list[tuple[str, str]]:
-    matches: list[tuple[str, str]] = re.findall(r"\[(.*?)\]\((.*?)\)", text)
-
-    return matches
+from textnode import TextNode, TextType, text_node_to_html_node
 
 
 def markdown_to_blocks(markdown: str) -> list[str]:
