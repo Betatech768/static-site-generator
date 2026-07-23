@@ -19,7 +19,7 @@ class HTMLNode:
         raise NotImplementedError("Method or Function hasn't been implemented yet")
 
     def props_to_html(self) -> str:
-        if not self.props:
+        if self.props is None:
             return ""
 
         formatted_value = ""
@@ -39,10 +39,10 @@ class LeafNode(HTMLNode):
 
     @override
     def to_html(self):
-        if not self.value:
+        if self.value is None:
             raise ValueError("inappropraite value or type")
 
-        if not self.tag:
+        if self.tag is None:
             return self.value
         return f"<{self.tag}{self.props_to_html()}>{self.value}</{self.tag}>"
 
@@ -62,15 +62,16 @@ class ParentNode(HTMLNode):
 
     @override
     def to_html(self) -> str:
-        if not self.tag:
+        if self.tag is None:
             raise ValueError("tag is required")
 
-        if not self.children:
+        if self.children is None:
             raise ValueError("Children is Required")
 
         html_children = ""
 
         for child in self.children:
+            print(child)
             html_children += child.to_html()
         return f"<{self.tag}{self.props_to_html()}>{html_children}</{self.tag}>"
 
