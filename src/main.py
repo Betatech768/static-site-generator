@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 from copy_to_public import clear_public, copy_to_public
-from generate_page import generate_page
+from generate_page import generate_pages_recursive
 
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
@@ -15,11 +15,11 @@ def main():
 
     copy_to_public(SOUCRE_DIR, PUBLIC)
 
-    CONTENT_PATH = os.path.join(ROOT_DIR, "content/index.md")
+    CONTENT_PATH = os.path.join(ROOT_DIR, "content")
     TEMPLATE_PATH = os.path.join(ROOT_DIR, "template.html")
-    DESTINATION_PATH = os.path.join(PUBLIC, "index.html")
+    DESTINATION_PATH = PUBLIC
     
-    generate_page(CONTENT_PATH, TEMPLATE_PATH,  DESTINATION_PATH)
+    generate_pages_recursive(CONTENT_PATH, TEMPLATE_PATH,  DESTINATION_PATH)
 
 
 
